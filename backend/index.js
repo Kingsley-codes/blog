@@ -13,7 +13,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+        'https://blog-mtrs.onrender.com/', // Your Render frontend URL
+        process.env.FRONTEND_URL, // For local testing (optional)
+    ],
     credentials: true
 }));
 
@@ -24,12 +27,6 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 app.use('/users', userRouter);
 app.use('/comments', commentRouter);
