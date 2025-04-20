@@ -27,6 +27,16 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
+// Add this near your other routes (before error handling)
+app.get('/', (req, res) => {
+    res.json({
+        message: "Backend is running!",
+        endpoints: {
+            posts: "/posts",
+            users: "/users"
+        }
+    });
+});
 
 app.use('/users', userRouter);
 app.use('/comments', commentRouter);
