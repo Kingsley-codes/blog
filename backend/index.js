@@ -12,7 +12,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors(process.env.FRONTEND_URL));
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+}));
+
 app.use(clerkMiddleware());
 
 app.use('/webhooks', webhookRouter);
@@ -40,7 +44,11 @@ app.use((error, req, res, next) => {
     });
 });
 
-app.listen(port, () => {
-    connectDB();
-    console.log('Server is running on port', port);
-});
+
+const startServer = async () => {
+    await connectDB();
+    app.listen(port, () => {
+        console.log('Server is running on port', port);
+    });
+};
+startServer();
