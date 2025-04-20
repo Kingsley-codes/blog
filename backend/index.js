@@ -27,6 +27,13 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // Add this near your other routes (before error handling)
 app.get('/', (req, res) => {
     res.json({
