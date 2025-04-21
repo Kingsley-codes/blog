@@ -8,4 +8,8 @@
       <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#5B86E5" flood-opacity="0.6"/>
     </filter>
   </defs>
-  <text x="50" y="150" font-family="Georgia, serif" font-size="160" font-weight="
+  <text x="50" y="150" font-family="Georgia, serif" font-size="160" font-weight="bold"
+        fill="url(#gradL)" filter="url(#glow)" transform="rotate(5 100 100)">
+    L
+  </text>
+</svg>
